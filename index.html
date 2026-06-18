@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Creaciones y Manualidades | Portafolio</title>
+    <style>
+        /* PALETA DE COLORES EXTRAÍDA DE TU IMAGEN
+           - #280847 (Morado Profundo)
+           - #D35C18 (Naranja Vibrante)
+           - #F0E0C6 (Crema / Fondo)
+        */
+        
+        :root {
+            --morado: #280847;
+            --naranja: #D35C18;
+            --crema: #F0E0C6;
+            --blanco: #ffffff;
+            --gris-texto: #444444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--crema);
+            color: var(--morado);
+            line-height: 1.6;
+            padding-bottom: 0;
+        }
+
+        /* Encabezado Adaptable */
+        header {
+            background-color: var(--morado);
+            color: var(--crema);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--naranja);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Menú de Navegación Móvil y Escritorio */
+        nav {
+            background-color: var(--naranja);
+            padding: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--crema);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--morado);
+            transform: scale(1.05);
+        }
+
+        /* Contenedor Principal Flexible */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Sección de Bienvenida */
+        .intro {
+            background: var(--blanco);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 8px solid var(--naranja);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(40, 8, 71, 0.05);
+        }
+
+        .intro h2 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        /* Título de Secciones */
+        .seccion-titulo {
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .seccion-titulo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--naranja);
+        }
+
+        /* REJILLA RESPONSIVA (Aquí está la magia de la adaptación) */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Por defecto: 1 columna en celulares */
+            gap: 25px;
+        }
+
+        /* Tarjeta del Trabajo */
+        .trabajo-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(40, 8, 71, 0.08);
+            border: 1px solid rgba(40, 8, 71, 0.08);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .trabajo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(40, 8, 71, 0.15);
+        }
+
+        /* Contenedor de la Imagen */
+        .imagen-contenedor {
+            width: 100%;
+            height: 240px;
+            background-color: var(--morado);
+            overflow: hidden;
+        }
+
+        .imagen-contenedor img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta la foto perfectamente sin deformar */
+            transition: transform 0.5s ease;
+        }
+
+        .trabajo-card:hover .imagen-contenedor img {
+            transform: scale(1.06);
+        }
+
+        /* Textos dentro de la tarjeta */
+        .info-contenedor {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .info-contenedor h3 {
+            font-size: 1.25rem;
+            margin: 10px 0;
+            color: var(--morado);
+        }
+
+        .info-contenedor p {
+            font-size: 0.95rem;
+            color: var(--gris-texto);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .tag-categoria {
+            display: inline-block;
+            background-color: var(--naranja);
+            color: var(--crema);
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 20px;
+            align-self: flex-start;
+            text-transform: uppercase;
+        }
+
+        /* Sección de Contacto */
+        .contacto-seccion {
+            background-color: var(--morado);
+            color: var(--crema);
+            padding: 40px 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .contacto-seccion h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .contacto-seccion p {
+            margin-bottom: 25px;
+            font-size: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Botones de Contacto Flexibles */
+        .botones-contacto {
+            display: flex;
+            flex-direction: column; /* Columna en móviles */
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 320px;
+            padding: 14px 24px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #ffffff;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebd58;
+        }
+
+        .btn-correo {
+            background-color: var(--naranja);
+            color: var(--crema);
+        }
+
+        .btn-correo:hover {
+            background-color: #b54910;
+        }
+
+        /* Pie de Página */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: var(--morado);
+            border-top: 1px solid rgba(40, 8, 71, 0.15);
+        }
+
+
+        /* ==========================================================================
+           MEDIA QUERIES (Puntos de adaptación para pantallas medianas y grandes)
+           ========================================================================== */
+
+        /* Para Tabletas (Pantallas desde 600px de ancho) */
+        @media (min-width: 600px) {
+            header { padding: 60px 20px; }
+            header h1 { font-size: 2.6rem; }
+            
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas en tabletas */
+            }
+            
+            .botones-contacto {
+                flex-direction: row; /* Los botones se ponen uno al lado del otro */
+                gap: 20px;
+            }
+            .btn { width: auto; }
+        }
+
+        /* Para Computadoras de Escritorio (Pantallas desde 992px de ancho) */
+        @media (min-width: 992px) {
+            header h1 { font-size: 3rem; }
+            
+            .galeria-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+            }
+            
+            .intro { padding: 35px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header id="inicio">
+        <h1>Mis Creaciones y Manualidades</h1>
+        <p>Material Educativo, Diseños Académicos y Estructuras Creativas a la Medida</p>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#galeria">Mi Portafolio</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container">
+        
+        <!-- BIENVENIDA -->
+        <div class="intro">
+            <h2>¡Hola! Qué gusto tenerte por aquí.</h2>
+            <p>Me dedico al diseño y confección de todo tipo de recursos visuales y pedagógicos. Trabajo de forma pulcra, detallada y totalmente personalizada para que tus exposiciones, defensas de proyectos o eventos destaquen por completo. ¡Echa un vistazo a mi catálogo!</p>
+        </div>
+
+        <!-- GALERÍA DE TRABAJOS -->
+        <h2 class="seccion-titulo" id="galeria">Catálogo de Trabajos</h2>
+        
+        <div class="galeria-grid">
+
+            <!-- Tarjeta 1: Láminas y Pancartas -->
+            <div class="trabajo-card">
+                <div class="imagen-contenedor">
+                    <img src="laminas.jpg" alt="Láminas y Pancartas Expositivas">
+                </div>
+                <div class="info-contenedor">
+                    <span class="tag-categoria">Dibujo Escolar</span>
+                    <h3>Láminas y Pancartas</h3>
+                    <p>Diseños a gran escala para exposiciones impecables, pancartas llamativas de cumpleaños o bienvenidas con rotulación limpia y creativa.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2: Lapbooks y Abanicos -->
+            <div class="trabajo-card">
+                <div class="imagen-contenedor">
+                    <img src="lapbooks.jpg" alt="Lapbooks Didácticos">
+                </div>
+                <div class="info-contenedor">
+                    <span class="tag-categoria">Interactivos</span>
+                    <h3>Lapbooks y Abanicos</h3>
+                    <p>Libros desplegables e interactivos y abanicos informativos llenos de color y sorpresas dinámicas, ideales para defensas escolares atractivas.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3: Maquetas y Murales -->
+            <div class="trabajo-card">
+                <div class="imagen-contenedor">
+                    <img src="maquetas.jpg" alt="Maquetas y Estructuras">
+                </div>
+                <div class="info-contenedor">
+                    <span class="tag-categoria">Estructuras 3D</span>
+                    <h3>Maquetas y Murales</h3>
+                    <p>Modelos a escala tridimensionales con variedad de texturas y materiales, además de ambientación de murales y carteleras temáticas.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4: Mapas y Diagramas -->
+            <div class="trabajo-card">
+                <div class="imagen-contenedor">
+                    <img src="mapas.jpg" alt="Organizadores Gráficos">
+                </div>
+                <div class="info-contenedor">
+                    <span class="tag-categoria">Análisis Visual</span>
+                    <h3>Mapas y Organigramas</h3>
+                    <p>Estructuración lógica de mapas mentales, conceptuales e infografías mixtas que equilibran resúmenes precisos con dibujos e ilustraciones clave.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 5: Tarjetas e Invitaciones -->
+            <div class="trabajo-card">
+                <div class="imagen-contenedor">
+                    <img src="tarjetas.jpg" alt="Papelería Creativa">
+                </div>
+                <div class="info-contenedor">
+                    <span class="tag-categoria">Eventos</span>
+                    <h3>Invitaciones y Folletos</h3>
+                    <p>Diseño personalizado de tarjetas de invitación para toda ocasión, trípticos y dípticos informativos ordenados con excelente armonía visual.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 6: Tesis y Trabajos -->
+            <div class="trabajo-card">
+                <div class="imagen-contenedor">
+                    <img src="tesis.jpg" alt="Soporte Académico">
+                </div>
+                <div class="info-contenedor">
+                    <span class="tag-categoria">Metodología</span>
+                    <h3>Tesis y Portafolios</h3>
+                    <p>Organización formal de trabajos de investigación, transcripción, líneas de tiempo y portafolios físicos con un impecable orden cronológico.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN DE CONTACTO DIRECTO -->
+        <div class="contacto-seccion" id="contacto">
+            <h2>¿Tienes una entrega o evento pronto?</h2>
+            <p>¡No te compliques! Cuéntame qué necesitas, para cuándo lo necesitas y te haré un presupuesto a tu medida inmediatamente.</p>
+            
+            <div class="botones-contacto">
+                
+                <!-- WHATSAPP ACTUALIZADO -->
+                <a href="https://wa.me/584125407671?text=Hola!%20Vi%20tu%20página%20web%20y%20me%20gustaría%20cotizar%20una%20manualidad%20o%20trabajo%20académico." 
+                   target="_blank" 
+                   class="btn btn-whatsapp">
+                   💬 Escríbeme por WhatsApp
+                </a>
+
+                <!-- CORREO ACTUALIZADO -->
+                <a href="mailto:reale8521@gmail.com?subject=Cotización%20de%20Trabajo%20o%20Manualidad&body=Hola,%20me%20comunico%20desde%20tu%20sitio%20web%20para%20solicitar%20información%20sobre..." 
+                   class="btn btn-correo">
+                   ✉️ Envíame un Correo
+                </a>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>&copy; 2026 Portafolio de Manualidades Profesionales. Hecho con esmero y dedicación.</p>
+    </footer>
+
+</body>
+</html>
